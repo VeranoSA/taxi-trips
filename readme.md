@@ -1,3 +1,6 @@
+# Status Badge 
+[![Build Status](https://app.travis-ci.com/VeranoSA/taxi-trips.svg?branch=main)](https://app.travis-ci.com/VeranoSA/taxi-trips)
+
 # Taxi trips
 
 A local study is looking into the national minibus taxi industry in South Africa and they need help analyzing some data.
@@ -94,6 +97,6 @@ Fork and clone this repository.
 # Please
 
 * Do your own work - we will see if you are copying code.
-* Ask mentors if you need clarification - email them `mentors@projectcodex.co`.
+* Ask mentors if you need clarification - email them ``.
 * Enjoy it!
 
