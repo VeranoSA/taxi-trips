@@ -10,8 +10,8 @@ module.exports = function FruitBasket(pool){
 
     //totaltripcount
     async function totalTripCount(trip){
-        const count = await pool.query('SELECT quantity FROM trip WHERE routename_id = $1', [trip]);
-            return count.rows[0].quantity
+        const count = await pool.query('SELECT qty FROM trip WHERE routename_id = $1', [trip]);
+            return count.rows[0].qty
      }
     //find all region,
 async function findAllRegions(town){
@@ -36,12 +36,12 @@ async function findTripsByRegion(trip){
 
 //show the total income per taxi
 async function findTotalIncomePerTaxi(taxi){
-    const sum = await pool.query('SELECT quantity FROM trip WHERE quantity = $1', [taxi]);
+    const sum = await pool.query('SELECT qty FROM trip WHERE qty = $1', [taxi]);
         return sum.rows[0].quantity
  }
 
  async function findTotalIncome(taxiId) {
-    const selecttripSQL = `select *, quantity * price as total 
+    const selecttripSQL = `select *, qty * price as total 
         from trip 
             join routename on routename_id = trip.routename_id
         where taxi_id = $1`;
