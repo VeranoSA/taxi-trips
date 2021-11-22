@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 12
+env:
+   - DATABASE_URL=postgresql://postgres@localhost:5432/mytaxi;
+before_script:
+  - psql -c 'create database mytaxi' -U postgres  
+  - psql -U postgres -d mytaxi -a -f tables.sql
+ 
+services:
+  - postgresql
+© 2021 GitHub, Inc.

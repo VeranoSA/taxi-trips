@@ -3,23 +3,29 @@ let TaxiTrips = require("../taxi-trips");
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/my_balloon_tests';
+const connectionString = process.env.DATABASE_URL || 'postgresql://coder:12345@localhost:5432/mytaxi';
 
 const pool = new Pool({
-    connectionString
+    connectionString,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
 
 describe('Taxi Trips', function () {
 
-    // beforeEach(async function () {
-        
-    // });
+        beforeEach(async function(){
+            await pool.query('DELETE FROM trip;');
+            await pool.query('DELETE FROM taxi;');
+
+        });
 
     it('should find how many trips all the taxis made', async function () {
 
         const taxiTrips = TaxiTrips(pool);
+        await factoryBasket.addTrip('Cape Town - Bellville', 1, 15.00)
 
-        assert.equal(0, taxiTrips.totalTripCount());
+        assert.equal(1, taxiTrips.totalTripCount('Cape Town'));
     
 
     });
